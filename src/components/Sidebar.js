@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom"
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import QueryStatsIcon from "@mui/icons-material/QueryStats"
 import { useState } from "react";
+import { IconButton } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 
 function Sidebar() {
 
@@ -18,8 +20,13 @@ function Sidebar() {
     }
   ])
 
+  const handleHidingClick = ()  => {
+    const element = document.querySelector("#Sidebar");
+    element.classList.remove('active')
+  }
+
   return (
-    <div className="Sidebar">
+    <div className="Sidebar" id="Sidebar">
       <h1 className="softwareTitle">OEE Management System</h1>
       {
         sidebarTabs.map((data, index) => {
@@ -35,6 +42,11 @@ function Sidebar() {
           )
         })
       }
+      <div className="hidingSidebarButton">
+        <IconButton onClick={handleHidingClick}>
+          <ArrowBackIosIcon />
+        </IconButton>
+      </div>
     </div>
   )
 }

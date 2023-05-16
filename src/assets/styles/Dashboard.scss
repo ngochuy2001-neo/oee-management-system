@@ -1,0 +1,13 @@
+@import "../styles/colors";
+
+.Dashboard{
+  width: 100%;
+  padding: 10px;
+  height: 100vh;
+  background-color: $rich-black;
+  .GeneralOEE{
+    background-color: $yinmin-blue;
+    width: 100%;
+    height: 200px;
+  }
+}
