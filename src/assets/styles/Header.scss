@@ -1,0 +1,11 @@
+@import "../styles/colors";
+
+.Header{
+  height: 50px;
+  width: 100vw;
+  display: none;
+  background-color: $rich-black;
+  @media (max-width: 1100px) {
+    display: flex;
+  }
+}
