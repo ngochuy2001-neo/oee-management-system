@@ -1,5 +1,5 @@
 import "../assets/styles/Dashboard.scss"
-import GeneralOEE from "./GeneralOEE"
+import GeneralOEE from "../components/GeneralOEE"
 
 function Dashboard() {
   return (

@@ -31,7 +31,7 @@ function Sidebar() {
       {
         sidebarTabs.map((data, index) => {
           return (
-            <NavLink to={data.link} className="sidebarTab">
+            <NavLink key={index} to={data.link} className="sidebarTab">
               <div className="sidebarTabIcon">
                 {data.icon}
               </div>

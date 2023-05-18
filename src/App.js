@@ -2,8 +2,8 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import "./assets/styles/Sidebar.scss";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import Report from './components/Report';
+import Dashboard from './pages/Dashboard';
+import Report from './pages/Report';
 import Header from './components/Header';
 
 function App() {
