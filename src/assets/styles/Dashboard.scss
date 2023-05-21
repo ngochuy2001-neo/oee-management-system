@@ -3,7 +3,7 @@
 .Dashboard{
   width: 100%;
   padding: 10px;
-  height: 100vh;
+  height: fit-content;
   background-color: rgb(207, 205, 205);
   .GeneralOEE{
     background-color: white;
@@ -11,10 +11,156 @@
     height: 200px;
     display: flex;
     padding: 10px;
+    box-shadow: 0px 0px 10px 0px gray;
+    border-radius: 10px;
     .GeneralOEEScoreChart{
       height: 180px;
       width: 200px;
-      border-right: 1px solid white;
+      border-right: 1px solid black;
+      @media (max-width: 500px){
+        border-right: none;
+      }
+    }
+    .OEEParameters{
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-left: 10px;
+      padding-right: 10px;
+      border-right: 1px solid black;
+      @media (max-width: 1500px){
+        width: 100%;
+        border-right: none;
+      }
+      .parameterName{
+        width: 200px;
+      }
+      .OEEParameter{
+        font-weight: bold;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .OEEParameterBar{
+          height: 15px;
+          width: 85%;
+          background-color: gray;
+          border: 2px solid black;
+          .OEEParameterLoad{
+            height: 100%;
+            transition: 0.5s;
+            border-right: 1px solid white;
+          }
+        }
+        .OEEParameterNumber{
+          margin-left: 10px;
+        }
+      }
+      @media (max-width: 500px){
+        .OEEParameter{
+          width: fit-content;
+          line-height: 100%;
+          .parameterName{
+            width: fit-content;
+          }
+          .OEEParameterBar{
+            display: none
+          }
+          .OEEParameterNumber{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .OEESideStatistics{
+      flex: 1;
+      margin-left: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .OEESideStatistic{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        font-size: 20px;
+      }
+      @media (max-width: 1500px){
+        display: none;
+      }
+    }
+  }
+  .devicesOEE{
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    @media (max-width: 650px){
+      justify-content: center;
+    }
+    .DeviceOEE{
+      width: fit-content;
+      border-radius: 10px;
+      background-color: white;
+      margin: 10px;
+      height: fit-content;
+      .deviceOEEHeader{
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        transition: 0.5s background-color;
+        padding: 4px 0px;
+        color: rgb(0, 0, 0);
+        text-shadow: 0px 0px 5px rgb(255, 255, 255);
+      }
+      .deviceOEEDetail{
+        display: flex;
+        flex-direction: row;
+        .deviceOEEParameterDoughnut{
+          width: 200px;
+          padding: 10px;
+        }
+        .deviceOEEParameters{
+          display: flex;
+          flex-direction: column;
+          width: 100px;
+          height: 200px;
+          align-items: center;
+          justify-content: space-around;
+          .deviceOEEParameter{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: left;
+            *{
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+      .deviceOEESideDetail{
+        margin: 0px 10px;
+        .deviceOEESideStat{
+          margin-bottom: 10px;
+          .valueBar{
+            width: 100%;
+            height: 5px;
+            background-color: gray;
+            margin-top: 2px;
+            .valueProcess{
+              height: 100%;
+              transition: 0.5s;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
     }
   }
 }

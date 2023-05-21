@@ -10,18 +10,19 @@
   height: 100vh;
   width: 350px;
   position: fixed;
-  background-color: #ffffff;
+  background-color: #000655;
   display: flex;
   flex-direction: column;
   z-index: 9999999;
+  box-shadow: 0px 0px 10px 0px gray;
   .softwareTitle{
     text-align: center;
-    color: black;
+    color: rgb(255, 255, 255);
     font-family: 'Zantroke', sans-serif;
     width: 100%;
     font-size: 40px;
     padding: 20px 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(255, 255, 255);
   }
   .sidebarTab{
     text-decoration: none;
@@ -30,7 +31,7 @@
     height: 50px;
     align-items: center;
     font-size: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     *{
       display: flex;
       justify-content: center;
@@ -66,13 +67,13 @@
     }
     .hidingSidebarButton{
       display: inline;
-      color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
       text-align: center;
       margin-left: 10px;
       margin-right: 10px;
-      border: 1px solid black;
+      border: 1px solid rgb(255, 255, 255);
       *{
-        color: black;
+        color: rgb(255, 255, 255);
       }
     }
   }

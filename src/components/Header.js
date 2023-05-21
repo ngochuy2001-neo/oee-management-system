@@ -3,6 +3,7 @@ import IconButton from "@mui/material/IconButton"
 import MenuIcon from "@mui/icons-material/Menu"
 
 function Header() {
+
   const handleMenuClick = () => {
     const sidebar = document.querySelector("#Sidebar")
     sidebar.classList.add('active')

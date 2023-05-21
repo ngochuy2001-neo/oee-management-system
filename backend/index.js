@@ -7,6 +7,7 @@ const dashboardRoutes = require('./routes/dashboard')
 
 app.use(cors())
 app.use('/', dashboardRoutes)
+app.use(express.json())
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`)

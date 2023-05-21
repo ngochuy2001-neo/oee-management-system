@@ -1,42 +1,20 @@
 import { Doughnut } from "react-chartjs-2"
 import { useState, useEffect } from "react"
-import axios from "axios";
-import { OEECalculator, statisticColor } from "../functions";
+import { statisticColor } from "../functions";
 import 'chart.js/auto'
 import {Chart, ArcElement, Tooltip, Legend} from "chart.js"
 
-function GeneralOEE() {
+function GeneralOEE({ oeescore, parameters, sideParameters }) {
 
   Chart.register(ArcElement, Tooltip, Legend)
   
-  const [generalOEEData, setGeneralOEEData] = useState()
-  const [oeeScore, setOEEScore] = useState(0)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:4000/generaloee');
-        setGeneralOEEData(response.data)
-        setOEEScore(OEECalculator(response.data.availability, response.data.quality, response.data.performance))
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    const interval = setInterval(fetchData, 3000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   const [doughnutChartDataset, setDoughnutChartDataset] = useState(
     {
       labels: ['GeneralOEE'],
       datasets: [
         {
           label: 'General OEE Score',
-          data: [oeeScore, 100 - oeeScore],
+          data: [oeescore, 100 - oeescore],
           backgroundColor: ['#0cb504', '#5e5e5e'],
           borderWidth: 1
         }
@@ -51,13 +29,13 @@ function GeneralOEE() {
         datasets:[
           {
             ...prevDataset.datasets[0],
-            data: [oeeScore, 100 - oeeScore],
-            backgroundColor: [statisticColor(oeeScore)[0], statisticColor(oeeScore)[1]]
+            data: [oeescore, 100 - oeescore],
+            backgroundColor: [statisticColor(oeescore)[0], statisticColor(oeescore)[1]]
           }
         ]
       }
     )) 
-  }, [oeeScore])
+  }, [oeescore])
 
   const textCenter = {
     id: 'textCenter',
@@ -89,6 +67,36 @@ function GeneralOEE() {
       <div className="GeneralOEEScoreChart">
         <Doughnut data = {doughnutChartDataset} options={options} plugins={[textCenter]}/>
       </div>
+      <div className="OEEParameters">
+        {
+          parameters.map((data, index) => {
+            return(
+              <div className="OEEParameter">
+                <p className="parameterName">{data.label}<span>:</span></p>
+                <div className="OEEParameterBar" style={{backgroundColor: statisticColor(data.score)[1]}}>
+                  <div className="OEEParameterLoad" style={{width: `${data.score}%`, backgroundColor: statisticColor(data.score)[0]}}></div>
+                </div>
+                <div className="OEEParameterNumber" style={{color: statisticColor(data.score)[0]}}>
+                  {data.score}%
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+      <div className="OEESideStatistics">
+        {
+          sideParameters.map((data, index) => {
+            return(
+              <div className="OEESideStatistic">
+                {data.icon}
+                <p style={{marginTop: "10px"}}>{data.value} {data.unit}</p>
+              </div>
+            )
+          })
+        }
+      </div>
+      <div className="OEESidestatistic"></div>
     </div>
   )
 }
